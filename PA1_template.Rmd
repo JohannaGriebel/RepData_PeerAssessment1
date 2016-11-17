@@ -38,7 +38,9 @@ stepsperday<-aggregate(steps~date, activity ,sum)
 histogram of the total number of steps taken per day
 
 ```{r}
-ggplot(stepsperday, aes(steps))+geom_histogram(bins=30)
+ggplot(stepsperday, aes(steps))+geom_histogram(bins=30)+
+        labs(y="counts", x="total number of steps")+
+        ggtitle("Total number of steps taken each day")
 ```
 
 mean and median of total numbers of steps taken per day
@@ -60,7 +62,9 @@ interval<-aggregate(steps~interval,activity, mean, na.rm=TRUE)
 time series plot of the interval and the average steps taken
 
 ```{r}
-ggplot(interval, aes(x=interval, y=steps))+geom_line()
+ggplot(interval, aes(x=interval, y=steps))+geom_line()+
+        labs(y="average number of steps", x="interval")+
+        ggtitle("daily activity pattern")
 ```
 
 5-minute interval with maximum average number of steps
@@ -109,7 +113,9 @@ histogram for the data with and without NA
 ```{r}
 ggplot(dfboth, aes(x=steps)) +
         geom_histogram(bins=30) +
-        facet_grid(.~group)
+        facet_grid(.~group)+
+        labs(y="counts", x="total number of steps")+
+        ggtitle("Comparison of the total number of steps taken each day")
 ```
 
 comparison of median and mean of the data with NAs and without NAs
@@ -163,6 +169,8 @@ df<-aggregate(steps~weekend+interval, activityNA, mean)
 time series plots of the 5-minute interval and the average number of steps taken across weekdays and weekends
 
 ```{r}
-ggplot(df, aes(x=interval, y=steps))+geom_line()+facet_grid(weekend~.)
+ggplot(df, aes(x=interval, y=steps))+geom_line()+facet_grid(weekend~.)+
+        labs(y="average number of steps", x="interval")+
+        ggtitle("Comparision of average number of steps taken each day")
 ```
 

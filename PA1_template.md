@@ -63,7 +63,9 @@ histogram of the total number of steps taken per day
 
 
 ```r
-ggplot(stepsperday, aes(steps))+geom_histogram(bins=30)
+ggplot(stepsperday, aes(steps))+geom_histogram(bins=30)+
+        labs(y="counts", x="total number of steps")+
+        ggtitle("Total number of steps taken each day")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
@@ -95,7 +97,9 @@ time series plot of the interval and the average steps taken
 
 
 ```r
-ggplot(interval, aes(x=interval, y=steps))+geom_line()
+ggplot(interval, aes(x=interval, y=steps))+geom_line()+
+        labs(y="average number of steps", x="interval")+
+        ggtitle("daily activity pattern")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
@@ -162,7 +166,9 @@ histogram for the data with and without NA
 ```r
 ggplot(dfboth, aes(x=steps)) +
         geom_histogram(bins=30) +
-        facet_grid(.~group)
+        facet_grid(.~group)+
+        labs(y="counts", x="total number of steps")+
+        ggtitle("Comparison of the total number of steps taken each day")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
@@ -230,7 +236,9 @@ time series plots of the 5-minute interval and the average number of steps taken
 
 
 ```r
-ggplot(df, aes(x=interval, y=steps))+geom_line()+facet_grid(weekend~.)
+ggplot(df, aes(x=interval, y=steps))+geom_line()+facet_grid(weekend~.)+
+        labs(y="average number of steps", x="interval")+
+        ggtitle("Comparision of average number of steps taken each day")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
